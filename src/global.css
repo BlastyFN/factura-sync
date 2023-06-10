@@ -1,0 +1,15 @@
+:root {
+    --Raisin-Black: #2D232E;
+    --Onyx: #474448;
+  }
+
+.btn-black{
+    background-color: var(--Raisin-Black);
+    color: white;
+}
+
+.btn-black:hover{
+    background-color: var(--Onyx);
+    color: white;
+}
+
