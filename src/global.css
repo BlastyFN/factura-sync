@@ -1,15 +1,62 @@
 :root {
     --Raisin-Black: #2D232E;
     --Onyx: #474448;
+    --Green: #648767;
+    --Bone: #E0DDCF;
+    --Red: #EF767A;
   }
 
 .btn-black{
     background-color: var(--Raisin-Black);
     color: white;
+    font-size: large;
 }
 
-.btn-black:hover{
+.btn:hover{
     background-color: var(--Onyx);
     color: white;
 }
 
+.client-filter-row{
+    margin-top: 3rem;
+}
+
+.client-filter-text-input{
+    border-radius: 10px;
+    font-size: x-large;
+}
+
+.switch-text {
+    color: var(--Raisin-Black); /* Color del texto */
+    margin-left: 10px; /* Espacio entre el switch y el texto */
+    line-height: 35px; /* Alineación vertical del texto */
+}
+
+.ClientCard{
+    border-style: solid;
+    border-color: var(--Raisin-Black);
+    padding: 0;
+    border-radius: 15px;
+    
+}
+
+.ClientCard-header{
+    background-color: var(--Bone);
+    width: 100%;
+    /* display: inline-block; */
+    border-bottom-style: solid;
+    border-color: var(--Raisin-Black);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.ClientCard-header h2{
+    padding-left: 4px;
+}
+
+
+.btn-green{
+    background-color: var(--Green);
+    color: white;
+    font-size: large;
+}
