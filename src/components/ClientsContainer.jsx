@@ -1,23 +1,23 @@
 
 import React, {useState } from 'react';
-
+import {GoPencil} from 'react-icons/go'
 const ClientsContainer = () =>{
-    const [active, setActive] = useState(false);
-    const [filterText, setFilterText] = useState("");
+    const [filter, setFilter] = useState({
+        active: false,
+        text: ""
+    });
    
-    const toggleActivity=()=> {
-        setActive(!active);
-    }
+
     return(
         <div className='ClientsContainer'> 
             <h1 className='text-center'>Clientes</h1>
-            <ClientsFilter isActive={active} onChangeSwitch={toggleActivity} onBtnSubmit={setFilterText}/>
-            <ClientBoard isActive={active} />
+            <ClientsFilter filter={filter} onFilterUpdate={setFilter}/>
+            <ClientBoard isActive={filter.active} />
         </div>
     );
 }
 
-const ClientsFilter = ({isActive, onChangeSwitch, onBtnSubmit}) =>{
+const ClientsFilter = ({filter, onFilterUpdate}) =>{
     //Estado local para poder limpiarlo cuando cambia el switch
     const [search, setSearch] = useState('');
     return(
@@ -25,19 +25,21 @@ const ClientsFilter = ({isActive, onChangeSwitch, onBtnSubmit}) =>{
             
             <div className='row client-filter-row'>
                 <input type="text" className='client-filter-text-input col-8' value={search} onChange={(e)=>setSearch(e.target.value)}/>
-                <button className='btn btn-black col-2 offset-2' onClick={()=>onBtnSubmit(search)}>Buscar</button> 
+                <button className='btn btn-black col-2 offset-2' onClick={()=>onFilterUpdate({...filter, text: search})}>Buscar</button> 
             </div>
             <div className='row client-filter-row'>
                 <div className="switch col-2  d-inline-block">
-                    <input type="checkbox" id="switch-1" className="switch-input"  checked={isActive} onChange={()=>{
-                        onChangeSwitch();
+                    <input type="checkbox" id="switch-1" className="switch-input"  checked={filter.active} onChange={()=>{
+                        onFilterUpdate({
+                            active: !filter.active,
+                            text: ""
+                        });
                         setSearch("");
-                        onBtnSubmit("");         
                     } }/> 
                     <label htmlFor="switch-1" className="switch-label"></label>
                     
                 </div>
-                <h3 className='d-inline-block col-10'>{isActive ? "Activos" : "Inactivos"}</h3>
+                <h3 className='d-inline-block col-10'>{filter.active ? "Activos" : "Inactivos"}</h3>
             </div>
             
             <div className='row client-filter-row'>
@@ -75,8 +77,9 @@ const ClientCard = ({isActive, client})=>{
     return(
         <div className='col mb-1'>
             <div className='ClientCard col'>
-                <div className='ClientCard-header p-2'>
-                    <h5>Alex Programador</h5>
+                <div className='ClientCard-header d-flex justify-content-between p-2'>
+                    <h5>Lalo</h5>
+                    <GoPencil className= "icon" size={"1.5rem"}/>
                 </div>
                 <div className='ClientCard-body p-2'>
                     <p >Alejandro Francisco Bañuelos Romero</p>

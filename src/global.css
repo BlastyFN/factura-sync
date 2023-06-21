@@ -6,6 +6,20 @@
     --Red: #EF767A;
   }
 
+.icon{
+    color: var(--Raisin-Black);
+}
+
+.icon:hover{
+    cursor:pointer;
+    color: var(--Onyx);
+}
+
+.icon:active{
+    color: white;
+}
+
+
 .btn-black{
     background-color: var(--Raisin-Black);
     color: white;
