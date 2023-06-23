@@ -26,6 +26,10 @@
     font-size: large;
 }
 
+.btn-black:disabled{
+    border-style: none;
+}
+
 .btn:hover{
     background-color: var(--Onyx);
     color: white;

@@ -1,6 +1,6 @@
 
 import React, {useState } from 'react';
-import {GoPencil} from 'react-icons/go';
+import {GoPencil, GoArrowLeft, GoArrowRight} from 'react-icons/go';
 const example = [
     {
         id:"123",
@@ -74,7 +74,8 @@ const ClientsContainer = () =>{
         <div className='ClientsContainer'> 
             <h1 className='text-center'>Clientes</h1>
             <ClientsFilter filter={filter} onFilterUpdate={setFilter}/>
-            {/* { <h4 className='text-center'>Cargando ...</h4> */ <ClientBoard clients={example} />}
+            <h3 className='text-center'>Cargando...</h3>
+            {/* { <ClientBoard clients={example} />} */}
         </div>
     );
 }
@@ -102,9 +103,9 @@ const ClientsFilter = ({filter, onFilterUpdate}) =>{
                     
                 </div>
                 <h3 className='d-inline-block col-3'>{filter.active ? "Activos" : "Inactivos"}</h3>
-                <button className='d-inline-block col-1 btn btn-black pag-btn' disabled>ANTERIOR</button>
+                <button className='d-inline-block col-1 btn btn-black pag-btn' disabled><GoArrowLeft color='white' size={"1.5rem"}/></button>
                 <h3 className='text-center d-inline-block col-2'>Página 1</h3>
-                <button className='d-inline-block col-1 btn btn-black pag-btn'>SIGUIENTE</button>
+                <button className='d-inline-block col-1 btn btn-black pag-btn'><GoArrowRight color='white' size={"1.5rem"}/></button>
             </div>
             
             <div className='row client-filter-row'>
@@ -121,6 +122,7 @@ const ClientBoard = ({clients}) =>{
         <div className='container overflow-hidden'>
             <div className='row row-cols-2 row-cols-lg-4 g-1 g-lg-2'>
                 {clients.map(client=>
+                    
                     <ClientCard key={client.id} client={client} />
                 )}
             </div>
