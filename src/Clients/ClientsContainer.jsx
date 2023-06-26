@@ -74,8 +74,8 @@ const ClientsContainer = () =>{
         <div className='ClientsContainer'> 
             <h1 className='text-center'>Clientes</h1>
             <ClientsFilter filter={filter} onFilterUpdate={setFilter}/>
-            <h3 className='text-center'>Cargando...</h3>
-            {/* { <ClientBoard clients={example} />} */}
+            {/* <h3 className='text-center'>Cargando...</h3> */}
+            { <ClientBoard clients={example} />}
         </div>
     );
 }
@@ -91,15 +91,15 @@ const ClientsFilter = ({filter, onFilterUpdate}) =>{
                 <button className='btn btn-black col-2 offset-2' onClick={()=>onFilterUpdate({...filter, text: search})}>BUSCAR</button> 
             </div>
             <div className='row client-filter-row'>
-                <div className="switch col-2  d-inline-block">
-                    <input type="checkbox" id="switch-1" className="switch-input"  checked={filter.active} onChange={()=>{
+                <div className="client-switch col-2  d-inline-block">
+                    <input type="checkbox" id="client-switch-1" className="client-switch-input"  checked={filter.active} onChange={()=>{
                         onFilterUpdate({
                             active: !filter.active,
                             text: ""
                         });
                         setSearch("");
                     } }/> 
-                    <label htmlFor="switch-1" className="switch-label"></label>
+                    <label htmlFor="client-switch-1" className="client-switch-label"></label>
                     
                 </div>
                 <h3 className='d-inline-block col-3'>{filter.active ? "Activos" : "Inactivos"}</h3>
@@ -120,7 +120,7 @@ const ClientBoard = ({clients}) =>{
     
     return(
         <div className='container overflow-hidden'>
-            <div className='row row-cols-2 row-cols-lg-4 g-1 g-lg-2'>
+            <div className='row row-cols-2 ads row-cols-lg-4 g-1 g-lg-2'>
                 {clients.map(client=>
                     
                     <ClientCard key={client.id} client={client} />

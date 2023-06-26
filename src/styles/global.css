@@ -1,0 +1,42 @@
+:root {
+    --Raisin-Black: #2D232E;
+    --Onyx: #474448;
+    --Green: #648767;
+    --Bone: #E0DDCF;
+    --Red: #EF767A;
+  }
+
+.icon{
+    color: var(--Raisin-Black);
+}
+
+.icon:hover{
+    cursor:pointer;
+    color: var(--Onyx);
+}
+
+.icon:active{
+    color: white;
+}
+
+
+.btn-black{
+    background-color: var(--Raisin-Black);
+    color: white;
+    font-size: large;
+}
+
+.btn-black:disabled{
+    border-style: none;
+}
+
+.btn:hover{
+    background-color: var(--Onyx);
+    color: white;
+}
+
+
+
+.pag-btn{
+    font-size: medium;
+}
