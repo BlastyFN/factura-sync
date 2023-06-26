@@ -1,6 +1,8 @@
 
 import React, {useState } from 'react';
-import {GoPencil, GoArrowLeft, GoArrowRight} from 'react-icons/go';
+
+import {ClientBoard} from './ClientBoard';
+import { ClientsFilter } from './ClientsFilter';
 const example = [
     {
         id:"123",
@@ -80,76 +82,9 @@ const ClientsContainer = () =>{
     );
 }
 
-const ClientsFilter = ({filter, onFilterUpdate}) =>{
-    //Estado local para poder limpiarlo cuando cambia el switch
-    const [search, setSearch] = useState('');
-    return(
-        <div className="ClientsFilter container  mt-6">
-            
-            <div className='row client-filter-row'>
-                <input type="text" className='client-filter-text-input col-8' value={search} onChange={(e)=>setSearch(e.target.value)}/>
-                <button className='btn btn-black col-2 offset-2' onClick={()=>onFilterUpdate({...filter, text: search})}>BUSCAR</button> 
-            </div>
-            <div className='row client-filter-row'>
-                <div className="client-switch col-2  d-inline-block">
-                    <input type="checkbox" id="client-switch-1" className="client-switch-input"  checked={filter.active} onChange={()=>{
-                        onFilterUpdate({
-                            active: !filter.active,
-                            text: ""
-                        });
-                        setSearch("");
-                    } }/> 
-                    <label htmlFor="client-switch-1" className="client-switch-label"></label>
-                    
-                </div>
-                <h3 className='d-inline-block col-3'>{filter.active ? "Activos" : "Inactivos"}</h3>
-                <button className='d-inline-block col-1 btn btn-black pag-btn' disabled><GoArrowLeft color='white' size={"1.5rem"}/></button>
-                <h3 className='text-center d-inline-block col-2'>Página 1</h3>
-                <button className='d-inline-block col-1 btn btn-black pag-btn'><GoArrowRight color='white' size={"1.5rem"}/></button>
-            </div>
-            
-            <div className='row client-filter-row'>
-            
-            </div>
-           
-        </div>
-    );
-}
 
-const ClientBoard = ({clients}) =>{
-    
-    return(
-        <div className='container overflow-hidden'>
-            <div className='row row-cols-2 ads row-cols-lg-4 g-1 g-lg-2'>
-                {clients.map(client=>
-                    
-                    <ClientCard key={client.id} client={client} />
-                )}
-            </div>
 
-        </div>
-    );
-}
 
-const ClientCard = ({client})=>{
-    return(
-        <div className='col mb-1'>
-            <div className='ClientCard col'>
-                <div className='ClientCard-header d-flex justify-content-between p-2'>
-                    <h5>{client.alias}</h5>
-                    <GoPencil className= "icon" size={"1.5rem"}/>
-                </div>
-                <div className='ClientCard-body p-2'>
-                    <p >{client.name}</p>
-                    <p>{client.email}</p>
-                </div>
-                <div className='ClientCard-footer p-2 d-grid gap-2 col-6 mx-auto'>
-                    <button className={"btn btn-lg " + (client.active?"btn-red":"btn-green")}>{client.active?"Desactivar":"Activar"}</button>
-                </div>
-                
-            </div>
-        </div>
-        
-    )
-}
+
+
 export default ClientsContainer;
