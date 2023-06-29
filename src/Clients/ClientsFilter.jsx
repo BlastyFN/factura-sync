@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {GoArrowLeft, GoArrowRight} from 'react-icons/go';
 
-const ClientsFilter = ({filter, onFilterUpdate}) =>{
+const ClientsFilter = ({filter, onFilterUpdate, page, onNextPage, onPreviousPage}) =>{
     //Estado local para poder limpiarlo cuando cambia el switch
     const [search, setSearch] = useState('');
     return(
@@ -24,9 +24,9 @@ const ClientsFilter = ({filter, onFilterUpdate}) =>{
                     
                 </div>
                 <h3 className='d-inline-block col-3'>{filter.active ? "Activos" : "Inactivos"}</h3>
-                <button className='d-inline-block col-1 btn btn-black pag-btn' disabled><GoArrowLeft color='white' size={"1.5rem"}/></button>
-                <h3 className='text-center d-inline-block col-2'>Página 1</h3>
-                <button className='d-inline-block col-1 btn btn-black pag-btn'><GoArrowRight color='white' size={"1.5rem"}/></button>
+                <button className='d-inline-block col-1 btn btn-black pag-btn' disabled = {page==1} onClick={onPreviousPage}><GoArrowLeft color='white' size={"1.5rem"}/></button>
+                <h3 className='text-center d-inline-block col-2'>Página {page}</h3>
+                <button className='d-inline-block col-1 btn btn-black pag-btn' onClick={onNextPage}><GoArrowRight color='white' size={"1.5rem"}/></button>
             </div>
             
             <div className='row client-filter-row'>
