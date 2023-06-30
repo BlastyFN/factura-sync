@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { GoPencil } from "react-icons/go";
-const ClientCard = ({client})=>{
+
+const ClientCard = ({client, setIsModalOpen})=>{
+
     return(
         <div className='col mb-1'>
             <div className='ClientCard col'>
                 <div className='ClientCard-header d-flex justify-content-between p-2'>
                     <h5>{client.alias}</h5>
-                    <GoPencil className= "icon" size={"1.5rem"}/>
+                    <span onClick={()=>{
+                        setIsModalOpen(state => !state);
+                    }}><GoPencil className= "icon" size={"1.5rem"}/></span>
                 </div>
                 <div className='ClientCard-body p-2'>
                     <p >{client.name}</p>
@@ -16,7 +21,9 @@ const ClientCard = ({client})=>{
                 </div>
                 
             </div>
+
         </div>
+
         
     )
 }

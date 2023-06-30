@@ -40,3 +40,16 @@
 .pag-btn{
     font-size: medium;
 }
+
+.defModal{
+    background-color: #2D232E80;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
