@@ -12,7 +12,7 @@ const ClientBoard = ({clients}) =>{
                     <ClientCard key={client.id} client={client} setIsModalOpen={setIsModalOpen} />
                 )}
             </div>
-            {isModalOpen && (<Modal><ClientsModal></ClientsModal></Modal>)}
+            {isModalOpen && (<Modal><ClientsModal onCloseModal={setIsModalOpen}></ClientsModal></Modal>)}
         </div>
     );
 }
